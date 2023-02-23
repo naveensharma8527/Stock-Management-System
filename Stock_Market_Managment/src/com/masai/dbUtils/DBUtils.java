@@ -6,7 +6,8 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ResourceBundle;
 
-public class DBUtils {
+public class DbUtils {
+
 	final static String URL;
 	final static String username;
 	final static String password;
@@ -26,11 +27,11 @@ public class DBUtils {
 		password = bundle.getString("password");
 	}
 	
-	static Connection connectToDatabase() throws SQLException {
+	public static Connection connectToDatabase() throws SQLException {
 		return DriverManager.getConnection(URL, username, password);
 	}
 	
-	static void closeConnection(Connection conn) throws SQLException{
+	public static void closeConnection(Connection conn) throws SQLException{
 		if(conn != null)
 			conn.close();
 	}
@@ -41,8 +42,9 @@ public class DBUtils {
 	 * @return - true of resultset is empty, false otherwise
 	 * @throws SQLException - if anything went wrong during this operation
 	 */
-	static boolean isResultSetEmpty(ResultSet rs) throws SQLException {
+	public static boolean isResultSetEmpty(ResultSet rs) throws SQLException {
 		return (!rs.isBeforeFirst() && rs.getRow() == 0)?true:false;
 	}
+	
 	
 }
