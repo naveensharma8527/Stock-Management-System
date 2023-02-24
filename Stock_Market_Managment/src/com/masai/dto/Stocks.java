@@ -2,14 +2,14 @@ package com.masai.dto;
 
 public class Stocks {
 	int id ;
-	int name;
+	String name;
 	int quantity;
 	int price;
 	int totalQuantity;
 	
 	public Stocks() {};
 	
-	public Stocks(int id, int name, int quantity, int price, int totalQuantity) {
+	public Stocks(int id, String name, int quantity, int price, int totalQuantity) {
 		this.id = id;
 		this.name = name;
 		this.quantity = quantity;
@@ -25,11 +25,11 @@ public class Stocks {
 		this.id = id;
 	}
 
-	public int getName() {
+	public String getName() {
 		return name;
 	}
 
-	public void setName(int name) {
+	public void setName(String name) {
 		this.name = name;
 	}
 
