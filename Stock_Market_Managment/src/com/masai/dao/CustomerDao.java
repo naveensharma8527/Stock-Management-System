@@ -9,7 +9,7 @@ import com.masai.exception.SomeThingWrongException;
 public interface CustomerDao {
 	
 
-	List<Stocks> viewCustomers()throws SomeThingWrongException,NoRecordFoundException;
+	List<Stocks> viewStocks()throws SomeThingWrongException,NoRecordFoundException;
 	
 	void buyStock(int cust_id,int stock_id ,int buyquantity)throws SomeThingWrongException, NoRecordFoundException;
 	

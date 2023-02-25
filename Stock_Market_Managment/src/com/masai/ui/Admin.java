@@ -4,8 +4,13 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.Scanner;
 
+import com.masai.dao.BrokerDaoImpl;
 import com.masai.dbUtils.DbUtils;
+import com.masai.dto.Customer;
+import com.masai.dto.Stocks;
+import com.masai.exception.NoRecordFoundException;
 import com.masai.exception.SomeThingWrongException;
 
 public class Admin {
@@ -20,8 +25,68 @@ public class Admin {
 		System.out.println("7. Delete stock");
 		System.out.println("0. for Exit");
 	}
+	static void adminMenu(Scanner sc,BrokerDaoImpl bdi) throws SomeThingWrongException, NoRecordFoundException {
+		int choice = 0;
+		do {
+			displayAdminMenu();
+			System.out.print("Enter selection ");
+			choice = sc.nextInt();
+			switch(choice) {
+				case 0:
+					System.out.println("Bye Bye admin");
+					break;
+				case 1:
+
+					Customer cust = new Customer();
+					System.out.println("Enter customer id");
+					cust.setId(sc.nextInt());
+					System.out.println("Enter username of customer");
+					cust.setUsername(sc.next());
+					System.out.println("Enter customer password");
+					cust.setPassword(sc.next());
+					cust.setStatus(true);
+					cust.setWallet(500);
+					
+					bdi.registerCustomer(cust);
+					break;
+				case 2:
+					System.out.println(bdi.viewCustomers());
+					break;
+				case 3:					
+					Stocks stk = new Stocks();
+					
+					System.out.println("Enter stock id");
+					
+					stk.setId(sc.nextInt());
+					System.out.println("Enter stock name");
+					stk.setName(sc.next());
+					stk.setQuantity(500);
+					System.out.println("Enter per stock amount");
+					stk.setPrice(sc.nextInt());
+					stk.setTotalQuantity(500);
+					bdi.addStock(stk);
+					break;
+				case 4:
+				
+					break;
+				case 5:
+					System.out.println("Enter stock id to view its report");
+					bdi.StockReport(sc.nextInt());
+					break;
+				case 6:
+					
+					break;
+				case 7:
+					
+					break;
+				default:
+					System.out.println("Invalid Selection, try again");
+			}
+		}while(choice != 0);
+	}
 	
-	public static void isAdmin(String username,String password) {
+	
+	public static void isAdmin(String username,String password,Scanner sc, BrokerDaoImpl bdi) throws SomeThingWrongException, NoRecordFoundException {
 		Connection con = null;
 		try {
 			 con = DbUtils.connectToDatabase();
@@ -39,7 +104,7 @@ public class Admin {
 				System.out.println("Wrong username or password");
 			}else {
 				System.out.println("Welcome "+ username);
-				displayAdminMenu();
+				adminMenu( sc,bdi);
 				System.exit(0);
 				
 			}

@@ -16,7 +16,7 @@ import com.masai.exception.SomeThingWrongException;
 public class CustomerDaoImpl implements CustomerDao {
 
 	@Override
-	public List<Stocks> viewCustomers() throws SomeThingWrongException, NoRecordFoundException {
+	public List<Stocks> viewStocks() throws SomeThingWrongException, NoRecordFoundException {
 		
 		Connection connection = null;
 		List<Stocks> list = new ArrayList<>();
@@ -410,7 +410,39 @@ public class CustomerDaoImpl implements CustomerDao {
 	
 	@Override
 	public void viewTransactionHistory(int customer_id) throws SomeThingWrongException, NoRecordFoundException {
-		
+		Connection connection = null;
+		try {
+			//connect to database
+			connection = DbUtils.connectToDatabase();
+			//prepare the query
+			String SELECT_QUERY = "select stock_name,type,transaction.quantity from transaction inner join stocks on transaction.sid = stocks.sid where cid = '"+customer_id+"' ";;
+			
+			//get the prepared statement object
+			PreparedStatement ps = connection.prepareStatement(SELECT_QUERY);
+			
+			//execute query
+			ResultSet resultSet = ps.executeQuery();
+			
+			//check if result set is empty
+			if(DbUtils.isResultSetEmpty(resultSet)) {
+				throw new NoRecordFoundException("No Transaction Record of Customer");
+			}
+			
+			while(resultSet.next()) {
+				System.out.println("Stock Name = "+ resultSet.getString(1)+" Type = "+ resultSet.getString(2)+ " Quanity = "+ resultSet.getInt(3));
+			}
+			
+		}catch(SQLException sqlEx) {
+			//code to log the error in the file
+			throw new SomeThingWrongException();
+		}finally {
+			try {
+				//close the exception
+				DbUtils.closeConnection(connection);				
+			}catch(SQLException sqlEX) {
+				throw new SomeThingWrongException();
+			}
+		}
 		
 		
 		
