@@ -232,7 +232,7 @@ public class Main {
 					cdi.sellStock(cid,sid, sellquantity);
 					break;
 				case 4:
-					cdi.viewTransactionHistory(choice);
+					cdi.viewTransactionHistory(cid);
 					break;
 				default:
 					System.out.println("Invalid Selection, try again");
