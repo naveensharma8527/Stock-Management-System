@@ -39,7 +39,7 @@ Manage their wallet by adding or withdrawing funds, and view their transaction h
 
 ## Learning
 
-- Gain excessive knowledge to make an application usining Java, JDBC, MySQL.
+- Gain excessive knowledge to make an application using Java, JDBC, MySQL.
 - Got to know selft-learning and research of the various tools and technologies.
 - Enjoyed the process of learning and creating the product.
 
