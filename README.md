@@ -19,7 +19,7 @@
 
 ## Tech Stack
 
-[![My Skills](https://skillicons.dev/icons?i=java,spring,mysql,powershell,git,github)](http://suraj-996.github.io/)
+[![My Skills](https://skillicons.dev/icons?i=java,spring,mysql,powershell,git,github)]
 
 ## Features
 
