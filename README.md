@@ -19,7 +19,7 @@
 
 ## Tech Stack
 
-[![My Skills](https://skillicons.dev/icons?i=java,spring,mysql,powershell,git,github)]
+[![My Skills](https://skillicons.dev/icons?i=java,mysql,powershell,git,github)]
 
 ## Features
 
