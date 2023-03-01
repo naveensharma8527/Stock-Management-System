@@ -37,7 +37,7 @@ Buy and sell stocks using their demat account.
 Manage their wallet by adding or withdrawing funds, and view their transaction history.
 
 ## ER Diagram
-`ER Diagram`
+![stocks](https://user-images.githubusercontent.com/101116044/222051558-2ff027b9-c411-453e-b8a6-f3044e0d8f6d.png)
 ## Learning
 
 - Gain excessive knowledge to make an application using Java, JDBC, MySQL.
